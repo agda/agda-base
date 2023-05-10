@@ -1,4 +1,4 @@
 name: base
 include: .
 depend:
-flags:
+flags: --safe

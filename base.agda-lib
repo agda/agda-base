@@ -1,4 +1,4 @@
 name: base
 include: .
 depend:
-flags: --cubical-compatible
+flags: --cubical-compatible --safe
