@@ -1,3 +1,7 @@
 Nothing particular yet. Since there will be some copying from agda-stdlib, their license applies:
 
 https://github.com/agda/agda-stdlib/blob/master/LICENCE
+
+Also, code from stdlib-meta by Andre Knispel and Orestis Melkonian is used:
+
+https://github.com/omelkonian/stdlib-meta
