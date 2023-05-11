@@ -12,7 +12,7 @@ module Data.List.Base where
 -- open import Algebra.Bundles.Raw using (RawMagma; RawMonoid)
 open import Data.Bool.Base as Bool
   using (Bool; false; true; not; _∧_; _∨_; if_then_else_)
--- open import Data.Fin.Base using (Fin; zero; suc)
+open import Data.Fin.Base using (Fin; zero; suc)
 open import Data.Maybe.Base as Maybe using (Maybe; nothing; just; maybe′)
 open import Data.Nat.Base as ℕ -- using (ℕ; zero; suc; _+_; _*_ ; _≤_ ; s≤s)
 open import Data.Product as Prod using (_×_; _,_; map₁; map₂′)
@@ -173,7 +173,6 @@ any p = or ∘ map p
 all : (A → Bool) → List A → Bool
 all p = and ∘ map p
 
-{-
 sum : List ℕ → ℕ
 sum = foldr _+_ 0
 
@@ -182,7 +181,6 @@ product = foldr _*_ 1
 
 length : List A → ℕ
 length = foldr (const suc) 0
--}
 
 ------------------------------------------------------------------------
 -- Operations for constructing lists
