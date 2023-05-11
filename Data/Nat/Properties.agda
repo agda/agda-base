@@ -32,10 +32,10 @@ open import Level using (0ℓ)
 -- open import Relation.Binary
 -- open import Relation.Binary.Consequences using (flip-Connex)
 -- open import Relation.Binary.PropositionalEquality
--- open import Relation.Nullary hiding (Irrelevant)
+open import Relation.Nullary hiding (Irrelevant)
 -- open import Relation.Nullary.Decidable using (True; via-injection; map′)
 -- open import Relation.Nullary.Negation using (contradiction; contradiction₂)
--- open import Relation.Nullary.Reflects using (fromEquivalence)
+open import Relation.Nullary.Reflects using (fromEquivalence)
 
 -- open import Algebra.Definitions {A = ℕ} _≡_
 --   hiding (LeftCancellative; RightCancellative; Cancellative)
@@ -118,7 +118,6 @@ m ≟ n = map′ (≡ᵇ⇒≡ m n) (≡⇒≡ᵇ m n) (T? (m ≡ᵇ n))
 <⇒<ᵇ z<s               = tt
 <⇒<ᵇ (s<s m<n@(s≤s _)) = <⇒<ᵇ m<n
 
-{-
 <ᵇ-reflects-< : ∀ m n → Reflects (m < n) (m <ᵇ n)
 <ᵇ-reflects-< m n = fromEquivalence (<ᵇ⇒< m n) <⇒<ᵇ
 
@@ -140,6 +139,7 @@ m ≟ n = map′ (≡ᵇ⇒≡ m n) (≡⇒≡ᵇ m n) (T? (m ≡ᵇ n))
 ------------------------------------------------------------------------
 -- Properties of _≤_
 ------------------------------------------------------------------------
+{-
 
 ------------------------------------------------------------------------
 -- Relational properties of _≤_
@@ -481,7 +481,8 @@ m<1+n⇒m≤n (s≤s m≤n) = m≤n
   where
   rec : ∀ {m} → m < n → m ≢ o
   rec x<m refl = m<n⇒m≢o (s≤s x<m) refl
-
+-}
+{-
 ------------------------------------------------------------------------
 -- A module for reasoning about the _≤_ and _<_ relations
 ------------------------------------------------------------------------
@@ -2188,8 +2189,8 @@ module _ {p} {P : Pred ℕ p} (P? : U.Decidable P) where
       ... | yes refl = Pn
       ... | no  n≢v  = Pn<v (≤∧≢⇒< n≤v n≢v)
 
-
-
+-}
+{-
 ------------------------------------------------------------------------
 -- DEPRECATED NAMES
 ------------------------------------------------------------------------

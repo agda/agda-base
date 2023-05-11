@@ -25,7 +25,7 @@ open import Data.Maybe.Base public
 
 ------------------------------------------------------------------------
 -- Using Any and All to define Is-just and Is-nothing
-
+{-
 Is-just : Maybe A → Set _
 Is-just = Any (λ _ → ⊤)
 
@@ -37,3 +37,4 @@ to-witness (just {x = p} _) = p
 
 to-witness-T : ∀ (m : Maybe A) → T (is-just m) → A
 to-witness-T (just p) _  = p
+-}

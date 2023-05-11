@@ -80,7 +80,6 @@ _⊎-dec_ : Dec P → Dec Q → Dec (P ⊎ Q)
 does  (p? ⊎-dec q?) = does p? ∨ does q?
 proof (p? ⊎-dec q?) = proof p? ⊎-reflects proof q?
 -}
-
 _→-dec_ : Dec P → Dec Q → Dec (P → Q)
 does  (p? →-dec q?) = not (does p?) ∨ does q?
 proof (p? →-dec q?) = proof p? →-reflects proof q?
