@@ -13,7 +13,7 @@ open import Level using (Level; Lift)
 open import Data.Bool.Base using (Bool; false; true; not; T; _∧_; _∨_)
 open import Data.Unit.Base using (⊤)
 open import Data.Empty using (⊥)
--- open import Data.Empty.Irrelevant using (⊥-elim)
+open import Data.Empty.Irrelevant using (⊥-elim)
 open import Data.Product using (_×_)
 open import Data.Sum.Base using (_⊎_)
 open import Function.Base using (_∘_; const; _$_; flip)
@@ -50,7 +50,6 @@ open Dec public
 pattern yes p =  true because ofʸ  p
 pattern no ¬p = false because ofⁿ ¬p
 
-{-
 ------------------------------------------------------------------------
 -- Recompute
 
@@ -59,7 +58,6 @@ pattern no ¬p = false because ofⁿ ¬p
 recompute : ∀ {a} {A : Set a} → Dec A → .A → A
 recompute (yes x) _ = x
 recompute (no ¬p) x = ⊥-elim (¬p x)
--}
 
 ------------------------------------------------------------------------
 -- Interaction with negation, sum, product etc.

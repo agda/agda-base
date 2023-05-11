@@ -8,7 +8,7 @@ module Relation.Nullary.Negation.Core where
 
 open import Data.Bool.Base using (not)
 open import Data.Empty using (⊥)
--- open import Data.Empty.Irrelevant using (⊥-elim)
+open import Data.Empty.Irrelevant using (⊥-elim)
 open import Data.Product.Base using (_×_; _,_; proj₁; proj₂)
 -- open import Data.Sum.Base using (_⊎_; [_,_]; inj₁; inj₂)
 open import Function.Base using (flip; _$_; _∘_; const)
