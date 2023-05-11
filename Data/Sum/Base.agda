@@ -7,7 +7,7 @@
 module Data.Sum.Base where
 
 open import Data.Bool.Base using (true; false)
-open import Function.Base using (_∘_; _∘′_;  id) --; _-⟪_⟫-_ )
+open import Function.Base using (_∘_; _∘′_;  id; _-⟪_⟫-_)
 open import Level using (Level; _⊔_)
 
 private
@@ -67,8 +67,6 @@ assocʳ = [ map₂ inj₁ , inj₂ ∘′ inj₂ ]′
 assocˡ : A ⊎ B ⊎ C → (A ⊎ B) ⊎ C
 assocˡ = [ inj₁ ∘′ inj₁ , map₁ inj₂ ]′
 
-{-
 infixr 1 _-⊎-_
 _-⊎-_ : (A → B → Set c) → (A → B → Set d) → (A → B → Set (c ⊔ d))
 f -⊎- g = f -⟪ _⊎_ ⟫- g
--}

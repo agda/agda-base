@@ -167,3 +167,74 @@ typeOf {A = A} _ = A
 
 it : {A : Set a} → {{A}} → A
 it {{x}} = x
+
+
+------------------------------------------------------------------------
+-- Composition of a binary function with other functions
+
+infixr 0 _-⟪_⟫-_ -- _-⟨_⟫-_
+-- infixl 0 _-⟪_⟩-_
+-- infixr 1 _-⟨_⟩-_ ∣_⟫-_ ∣_⟩-_
+-- infixl 1 _on_ _on₂_ _-⟪_∣ _-⟨_∣
+
+-- Two binary functions
+
+_-⟪_⟫-_ : (A → B → C) → (C → D → E) → (A → B → D) → (A → B → E)
+f -⟪ _*_ ⟫- g = λ x y → f x y * g x y
+
+{-
+-- A single binary function on the left
+
+_-⟪_∣ : (A → B → C) → (C → B → D) → (A → B → D)
+f -⟪ _*_ ∣ = f -⟪ _*_ ⟫- constᵣ
+
+-- A single binary function on the right
+
+∣_⟫-_ : (A → C → D) → (A → B → C) → (A → B → D)
+∣ _*_ ⟫- g = const -⟪ _*_ ⟫- g
+
+-- A single unary function on the left
+
+_-⟨_∣ : (A → C) → (C → B → D) → (A → B → D)
+f -⟨ _*_ ∣ = f ∘₂ const -⟪ _*_ ∣
+
+-- A single unary function on the right
+
+∣_⟩-_ : (A → C → D) → (B → C) → (A → B → D)
+∣ _*_ ⟩- g = ∣ _*_ ⟫- g ∘₂ constᵣ
+
+-- A binary function and a unary function
+
+_-⟪_⟩-_ : (A → B → C) → (C → D → E) → (B → D) → (A → B → E)
+f -⟪ _*_ ⟩- g = f -⟪ _*_ ⟫- ∣ constᵣ ⟩- g
+
+-- A unary function and a binary function
+
+_-⟨_⟫-_ : (A → C) → (C → D → E) → (A → B → D) → (A → B → E)
+f -⟨ _*_ ⟫- g = f -⟨ const ∣ -⟪ _*_ ⟫- g
+
+-- Two unary functions
+
+_-⟨_⟩-_ : (A → C) → (C → D → E) → (B → D) → (A → B → E)
+f -⟨ _*_ ⟩- g = f -⟨ const ∣ -⟪ _*_ ⟫- ∣ constᵣ ⟩- g
+
+-- A single binary function on both sides
+
+_on₂_ : (C → C → D) → (A → B → C) → (A → B → D)
+_*_ on₂ f = f -⟪ _*_ ⟫- f
+
+-- A single unary function on both sides
+
+_on_ : (B → B → C) → (A → B) → (A → A → C)
+_*_ on f = f -⟨ _*_ ⟩- f
+
+
+------------------------------------------------------------------------
+-- Deprecated
+
+_-[_]-_ = _-⟪_⟫-_
+{-# WARNING_ON_USAGE _-[_]-_
+"Warning: Function._-[_]-_ was deprecated in v1.4.
+Please use _-⟪_⟫-_ instead."
+#-}
+-}

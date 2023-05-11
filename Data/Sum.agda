@@ -13,7 +13,7 @@ open import Data.Unit.Polymorphic.Base using (⊤; tt)
 open import Data.Maybe.Base using (Maybe; just; nothing)
 open import Function.Base
 open import Level
--- open import Relation.Nullary.Reflects using (invert)
+open import Relation.Nullary.Reflects using (invert)
 open import Relation.Nullary using (Dec; yes; no; _because_; ¬_)
 
 private
@@ -56,7 +56,6 @@ module _ {a b} {A : Set a} {B : Set b} where
   from-inj₂ (inj₂ x) = x
 
 -- Conversion back and forth with Dec
-{-
 fromDec : Dec A → A ⊎ ¬ A
 fromDec ( true because  [p]) = inj₁ (invert  [p])
 fromDec (false because [¬p]) = inj₂ (invert [¬p])
@@ -64,4 +63,3 @@ fromDec (false because [¬p]) = inj₂ (invert [¬p])
 toDec : A ⊎ ¬ A → Dec A
 toDec (inj₁ p)  = yes p
 toDec (inj₂ ¬p) = no ¬p
--}
