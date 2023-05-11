@@ -16,7 +16,7 @@ open import Data.Nat.Base public
 
 ------------------------------------------------------------------------
 -- Publicly re-export queries
-
+{-
 open import Data.Nat.Properties public
   using
   -- key values
@@ -34,6 +34,7 @@ open import Data.Nat.Properties public
   -- bounded predicates
   ; anyUpTo? ; allUpTo?
   )
+-}
 
 {-
 ------------------------------------------------------------------------
