@@ -172,17 +172,16 @@ it {{x}} = x
 ------------------------------------------------------------------------
 -- Composition of a binary function with other functions
 
-infixr 0 _-⟪_⟫-_ -- _-⟨_⟫-_
--- infixl 0 _-⟪_⟩-_
--- infixr 1 _-⟨_⟩-_ ∣_⟫-_ ∣_⟩-_
--- infixl 1 _on_ _on₂_ _-⟪_∣ _-⟨_∣
+infixr 0 _-⟪_⟫-_ _-⟨_⟫-_
+infixl 0 _-⟪_⟩-_
+infixr 1 _-⟨_⟩-_  ∣_⟩-_ ∣_⟫-_
+infixl 1 _on_ _on₂_  _-⟨_∣ _-⟪_∣
 
 -- Two binary functions
 
 _-⟪_⟫-_ : (A → B → C) → (C → D → E) → (A → B → D) → (A → B → E)
 f -⟪ _*_ ⟫- g = λ x y → f x y * g x y
 
-{-
 -- A single binary function on the left
 
 _-⟪_∣ : (A → B → C) → (C → B → D) → (A → B → D)
@@ -228,7 +227,7 @@ _*_ on₂ f = f -⟪ _*_ ⟫- f
 _on_ : (B → B → C) → (A → B) → (A → A → C)
 _*_ on f = f -⟨ _*_ ⟩- f
 
-
+{-
 ------------------------------------------------------------------------
 -- Deprecated
 
