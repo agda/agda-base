@@ -1,4 +1,6 @@
 name: base
 include: .
 depend:
-flags: --cubical-compatible --safe
+flags:  --cubical-compatible
+	--safe
+        --warning=noUnsupportedIndexedMatch
