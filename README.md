@@ -1,6 +1,6 @@
 # agda-base
-This is an experimental base library which is supposed to contain functional datastructures and reflection code.
-Equality is out of scope (with the possible exception of things like 'primQNameEquality'). 
+This is an experimental base library which is supposed to contain basic things, like functional datastructures and reflection code.
+Equality (in the sense of typal/propositional equality) is out of scope (with the possible exception of things like 'primQNameEquality' or for example the inductively defined equality on the naturals). 
 
 # contributions, comments and suggestions
 ... are very welcome.
