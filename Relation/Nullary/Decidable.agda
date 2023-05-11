@@ -1,10 +1,8 @@
 ------------------------------------------------------------------------
--- The Agda standard library
+-- From the Agda standard library
 --
 -- Operations on and properties of decidable relations
 ------------------------------------------------------------------------
-
-{-# OPTIONS --cubical-compatible --safe #-}
 
 module Relation.Nullary.Decidable where
 
@@ -14,13 +12,13 @@ open import Data.Empty using (⊥-elim)
 open import Data.Product as Prod hiding (map)
 open import Data.Sum.Base as Sum hiding (map)
 open import Function.Base
-open import Function.Bundles using
-  (Injection; module Injection; module Equivalence; _⇔_; _↔_; mk↔′)
-open import Relation.Binary using (Setoid; module Setoid; Decidable)
-open import Relation.Nullary
+-- open import Function.Bundles using
+--  (Injection; module Injection; module Equivalence; _⇔_; _↔_; mk↔′)
+-- open import Relation.Binary using (Setoid; module Setoid; Decidable)
+-- open import Relation.Nullary
 open import Relation.Nullary.Negation
-open import Relation.Nullary.Reflects using (invert)
-open import Relation.Binary.PropositionalEquality.Core using (_≡_; refl; cong′)
+-- open import Relation.Nullary.Reflects using (invert)
+-- open import Relation.Binary.PropositionalEquality.Core using (_≡_; refl; cong′)
 
 private
   variable
@@ -38,7 +36,7 @@ open import Relation.Nullary.Decidable.Core public
 map : P ⇔ Q → Dec P → Dec Q
 map P⇔Q = map′ to from
   where open Equivalence P⇔Q
-
+{-
 module _ {a₁ a₂ b₁ b₂} {A : Setoid a₁ a₂} {B : Setoid b₁ b₂}
          (inj : Injection A B)
   where
@@ -54,7 +52,7 @@ module _ {a₁ a₂ b₁ b₂} {A : Setoid a₁ a₂} {B : Setoid b₁ b₂}
   via-injection : Decidable _≈B_ → Decidable _≈A_
   via-injection dec x y =
     map′ injective cong (dec (to x) (to y))
-
+-}
 ------------------------------------------------------------------------
 -- A lemma relating True and Dec
 

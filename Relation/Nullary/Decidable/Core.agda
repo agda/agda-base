@@ -64,7 +64,7 @@ recompute (no ¬p) x = ⊥-elim (¬p x)
 ------------------------------------------------------------------------
 -- Interaction with negation, sum, product etc.
 
-infixr 1 _⊎-dec_
+-- infixr 1 _⊎-dec_
 infixr 2 _×-dec_ _→-dec_
 
 ¬? : Dec P → Dec (¬ P)

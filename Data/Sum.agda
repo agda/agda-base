@@ -56,7 +56,7 @@ module _ {a b} {A : Set a} {B : Set b} where
   from-inj₂ (inj₂ x) = x
 
 -- Conversion back and forth with Dec
-
+{-
 fromDec : Dec A → A ⊎ ¬ A
 fromDec ( true because  [p]) = inj₁ (invert  [p])
 fromDec (false because [¬p]) = inj₂ (invert [¬p])
@@ -64,3 +64,4 @@ fromDec (false because [¬p]) = inj₂ (invert [¬p])
 toDec : A ⊎ ¬ A → Dec A
 toDec (inj₁ p)  = yes p
 toDec (inj₂ ¬p) = no ¬p
+-}
