@@ -13,10 +13,10 @@ module Data.Nat.Base where
 open import Data.Bool.Base using (Bool; true; false; T; not)
 -- open import Data.Parity.Base using (Parity; 0ℙ; 1ℙ)
 open import Level using (0ℓ)
--- open import Relation.Binary.Core using (Rel)
+open import Relation.Binary.Core using (Rel)
 -- open import Relation.Binary.PropositionalEquality.Core
 --  using (_≡_; _≢_; refl)
--- open import Relation.Nullary.Negation.Core using (¬_; contradiction)
+open import Relation.Nullary.Negation.Core using (¬_) -- ; contradiction)
 
 ------------------------------------------------------------------------
 -- Types
@@ -41,7 +41,6 @@ _≤ᵇ_ : (m n : ℕ) → Bool
 zero  ≤ᵇ n = true
 suc m ≤ᵇ n = m <ᵇ n
 
-{-
 ------------------------------------------------------------------------
 -- Standard ordering relations
 
@@ -101,19 +100,24 @@ instance
   nonZero : ∀ {n} → NonZero (suc n)
   nonZero = _
 
+
+{-
 -- Constructors
 
 ≢-nonZero : ∀ {n} → n ≢ 0 → NonZero n
 ≢-nonZero {zero}  0≢0 = contradiction refl 0≢0
 ≢-nonZero {suc n} n≢0 = _
+-}
 
 >-nonZero : ∀ {n} → n > 0 → NonZero n
 >-nonZero z<s = _
 
+{-
 -- Destructors
 
 ≢-nonZero⁻¹ : ∀ n → .{{NonZero n}} → n ≢ 0
 ≢-nonZero⁻¹ (suc n) ()
+-}
 
 >-nonZero⁻¹ : ∀ n → .{{NonZero n}} → n > 0
 >-nonZero⁻¹ (suc n) = z<s
@@ -257,6 +261,7 @@ m ≥′ n = n ≤′ m
 _>′_ : Rel ℕ 0ℓ
 m >′ n = n <′ m
 
+{-
 ------------------------------------------------------------------------
 -- Another alternative definition of _≤_
 
@@ -276,6 +281,7 @@ m ≥″ n = n ≤″ m
 
 _>″_ : Rel ℕ 0ℓ
 m >″ n = n <″ m
+-}
 
 ------------------------------------------------------------------------
 -- Another alternative definition of _≤_
@@ -316,6 +322,7 @@ compare (suc m) (suc n) with compare m n
 ... | equal   m   = equal (suc m)
 ... | greater n k = greater (suc n) k
 
+{-
 ------------------------------------------------------------------------
 -- Raw bundles
 
