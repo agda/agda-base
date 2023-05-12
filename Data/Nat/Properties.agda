@@ -18,22 +18,22 @@ module Data.Nat.Properties where
 -- import Algebra.Lattice.Construct.NaturalChoice.MinMaxOp as LatticeMinMaxOp
 -- import Algebra.Properties.CommutativeSemigroup as CommSemigroupProperties
 open import Data.Bool.Base using (Bool; false; true; T)
--- open import Data.Bool.Properties using (T?)
+open import Data.Bool.Properties using (T?)
 open import Data.Empty using (⊥)
 open import Data.Nat.Base
 open import Data.Product using (_×_; _,_) -- (∄; ∃; _×_; _,_)
--- open import Data.Sum.Base as Sum
+open import Data.Sum.Base as Sum
 open import Data.Unit using (tt)
 open import Function.Base
 -- open import Function.Bundles using (_↣_)
 -- open import Function.Metric.Nat
 open import Level using (0ℓ)
--- open import Relation.Unary as U using (Pred)
--- open import Relation.Binary
+open import Relation.Unary as U using (Pred)
+open import Relation.Binary
 -- open import Relation.Binary.Consequences using (flip-Connex)
 -- open import Relation.Binary.PropositionalEquality
 open import Relation.Nullary hiding (Irrelevant)
--- open import Relation.Nullary.Decidable using (True; via-injection; map′)
+open import Relation.Nullary.Decidable using (True; via-injection; map′)
 -- open import Relation.Nullary.Negation using (contradiction; contradiction₂)
 open import Relation.Nullary.Reflects using (fromEquivalence)
 
@@ -175,7 +175,7 @@ m ≟ n = map′ (≡ᵇ⇒≡ m n) (≡⇒≡ᵇ m n) (T? (m ≡ᵇ n))
 -- a linear amount of time to generate the proof if it is inspected.
 -- We expect the main benefit to be visible in compiled code as the
 -- backend erases proofs.
-
+-}
 infix 4 _≤?_ _≥?_
 
 _≤?_ : Decidable _≤_
@@ -184,6 +184,7 @@ m ≤? n = map′ (≤ᵇ⇒≤ m n) ≤⇒≤ᵇ (T? (m ≤ᵇ n))
 _≥?_ : Decidable _≥_
 _≥?_ = flip _≤?_
 
+{-
 ------------------------------------------------------------------------
 -- Structures
 
@@ -366,6 +367,7 @@ n≤1⇒n≡0∨n≡1 (s≤s z≤n) = inj₂ refl
 ... | yes m≡n | _       = tri≈ (<-irrefl m≡n) m≡n (<-irrefl (sym m≡n))
 ... | no  m≢n | yes m<n = tri< (<ᵇ⇒< m n m<n) m≢n (<⇒≯ (<ᵇ⇒< m n m<n))
 ... | no  m≢n | no  m≮n = tri> (m≮n ∘ <⇒<ᵇ)   m≢n (≤∧≢⇒< (≮⇒≥ (m≮n ∘ <⇒<ᵇ)) (m≢n ∘ sym))
+-}
 
 infix 4 _<?_ _>?_
 
@@ -375,6 +377,7 @@ m <? n = suc m ≤? n
 _>?_ : Decidable _>_
 _>?_ = flip _<?_
 
+{-
 <-irrelevant : Irrelevant _<_
 <-irrelevant = ≤-irrelevant
 
