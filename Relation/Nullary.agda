@@ -24,7 +24,7 @@ open import Relation.Nullary.Reflects public using
   )
 
 open import Relation.Nullary.Decidable.Core public using
-  ( Dec; yes; no; _because_; recompute --; does; proof
+  ( Dec; yes; no; _because_; recompute; does; proof
 --  ; ¬?; _×-dec_; _⊎-dec_; _→-dec_
   )
 
