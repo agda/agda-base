@@ -6,7 +6,7 @@
 
 module Data.String where
 
-open import Data.Bool using (true; false) -- ; T?)
+open import Data.Bool using (true; false; T?)
 open import Data.Char as Char using (Char)
 open import Function.Base
 open import Data.Nat.Base as ℕ using (ℕ; _∸_; ⌊_/2⌋; ⌈_/2⌉)
@@ -20,7 +20,7 @@ open import Data.Vec.Base as Vec using (Vec)
 open import Data.Char.Base as Char using (Char)
 -- import Data.Char.Properties as Char using (_≟_)
 open import Function
--- open import Relation.Binary using (Rel)
+open import Relation.Binary using (Rel)
 -- open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 open import Relation.Nullary.Decidable using (does)
 -- open import Relation.Unary using (Pred; Decidable)
@@ -45,6 +45,7 @@ fromVec : ∀ {n} → Vec Char n → String
 fromVec = fromList ∘ Vec.toList
 
 {-
+
 -- enclose string with parens if it contains a space character
 parensIfSpace : String → String
 parensIfSpace s with does (' ' ∈? toList s)

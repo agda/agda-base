@@ -6,8 +6,7 @@
 
 module Relation.Nullary.Negation where
 
-{-
-open import Effect.Monad
+-- open import Effect.Monad
 open import Data.Bool.Base using (Bool; false; true; if_then_else_; not)
 open import Data.Empty
 open import Data.Product as Prod
@@ -26,15 +25,15 @@ private
     Q : Set q
     R : Set r
     Whatever : Set w
--}
+
 ------------------------------------------------------------------------
 -- Re-export public definitions
 
 open import Relation.Nullary.Negation.Core public
 
-{-
 ------------------------------------------------------------------------
 -- Quantifier juggling
+{-
 
 module _ {P : A → Set p} where
 
@@ -52,6 +51,7 @@ module _ {P : A → Set p} where
 
   ∃¬⟶¬∀ : ∃ (λ x → ¬ P x) → ¬ (∀ x → P x)
   ∃¬⟶¬∀ = flip ∀⟶¬∃¬
+
 ------------------------------------------------------------------------
 -- Double Negation
 
