@@ -12,26 +12,25 @@ The dependent sum type, total space, or type of dependent pairs, is
 defined as a record, so that it enjoys definitional η.
 
 ```agda
-record Σ {ℓ ℓ′} (A : Type ℓ) (B : A → Type ℓ′) : Type (ℓ ⊔ ℓ′) where
-  constructor _,_
-  field
-    fst : A
-    snd : B fst
+open import Agda.Builtin.Sigma public
+  using (fst; snd)
+  renaming (Σ to infix 5 Σ
+           ;_,_ to infixr 4 _,_)
 
-open Σ public
+-- The syntax declaration below is attached to Σ-syntax, to make it
+-- easy to import Σ without the special syntax.
 
-{-# BUILTIN SIGMA Σ #-}
+infix 2 Σ-syntax
 
-syntax Σ A (λ x → B) = Σ[ x ∈ A ] B
+Σ-syntax : {a b : Level} → (A : Type a) → (A → Type b) → Type (a ⊔ b)
+Σ-syntax = Σ
 
-infixr 4 _,_
-infix 5 Σ
+syntax Σ-syntax A (λ x → B) = Σ[ x ∈ A ] B
 ```
 
 Similarly, for the unit type:
 
 ```agda
-record ⊤ : Type where
-  instance constructor tt
-{-# BUILTIN UNIT ⊤ #-}
+open import Agda.Builtin.Unit public
+  using (⊤; tt)
 ```

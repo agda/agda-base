@@ -1,7 +1,6 @@
 <!--
 ```agda
 open import Prim.Type
-open import Prim.Kan
 ```
 -->
 
@@ -15,9 +14,6 @@ The `Maybe`{.Agda} is the free pointed type on a given type. It is used
 by Agda's primitives to represent failure.
 
 ```agda
-data Maybe {a} (A : Type a) : Type a where
-  just : A → Maybe A
-  nothing : Maybe A
-
-{-# BUILTIN MAYBE Maybe #-}
+open import Agda.Builtin.Maybe public
+  using (Maybe; just; nothing)
 ```
