@@ -6,4 +6,4 @@ Also, code from stdlib-meta by Andre Knispel and Orestis Melkonian is used:
 
 https://github.com/omelkonian/stdlib-meta
 
-Copied from the 1lab (under AGPL 3): Prim/Data/*
+Copied from the 1lab (under AGPL 3): Prim/Data/*, Prim/*, ...
