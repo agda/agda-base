@@ -1,13 +1,8 @@
-<!--
-```agda
-open import Prim.Extension
-open import Prim.Interval
-open import Prim.Type
-open import Prim.Kan
-```
--->
+Modified copy from 1lab.
 
 ```agda
+open import Prim.Type
+
 module Prim.Data.Sigma where
 ```
 
