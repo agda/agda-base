@@ -21,14 +21,13 @@ open import Relation.Nullary.Negation.Core using (¬_) -- ; contradiction)
 ------------------------------------------------------------------------
 -- Types
 
-open import Agda.Builtin.Nat public
-  using (zero; suc) renaming (Nat to ℕ)
+open import Prim.Data.Nat public
+  renaming (Nat to ℕ)
 
 ------------------------------------------------------------------------
 -- Boolean equality relation
 
-open import Agda.Builtin.Nat public
-  using () renaming (_==_ to _≡ᵇ_)
+open import Prim.Data.Nat public
 
 ------------------------------------------------------------------------
 -- Boolean ordering relation

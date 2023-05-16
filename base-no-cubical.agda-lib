@@ -1,5 +1,5 @@
 name: base
 include: .
 depend:
-flags:  --safe
+flags:  
         --warning=noUnsupportedIndexedMatch

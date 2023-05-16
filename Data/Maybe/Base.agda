@@ -17,6 +17,11 @@ open import Function.Base
 open import Relation.Nullary.Reflects
 open import Relation.Nullary.Decidable.Core
 
+
+-- from 1lab
+open import Meta.Idiom
+open import Meta.Bind
+
 private
   variable
     a b c : Level
@@ -89,12 +94,14 @@ ap : Maybe (A → B) → Maybe A → Maybe B
 ap nothing  = const nothing
 ap (just f) = map f
 
+{-
 -- Monad: bind
 
 infixl 1 _>>=_
 _>>=_ : Maybe A → (A → Maybe B) → Maybe B
 nothing >>= f = nothing
 just a  >>= f = f a
+-}
 
 -- Alternative: <∣>
 
@@ -138,3 +145,21 @@ thisM a = maybe′ (these a) (this a)
 thatM : Maybe A → B → These A B
 thatM = maybe′ these that
 -}
+
+-- from the 1lab
+extend : Maybe A → (A → Maybe B) → Maybe B
+extend (just x) k = k x
+extend nothing k  = nothing
+
+instance
+  Map-Maybe : Map (eff Maybe)
+  Map-Maybe .Map._<$>_ = map
+
+  Idiom-Maybe : Idiom (eff Maybe)
+  Idiom-Maybe .Idiom.pure = just
+  Idiom-Maybe .Idiom._<*>_ = λ where
+    (just f) (just x) → just (f x)
+    _ _ → nothing
+
+  Bind-Maybe : Bind (eff Maybe)
+  Bind-Maybe .Bind._>>=_ = extend

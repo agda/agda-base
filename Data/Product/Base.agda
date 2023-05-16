@@ -6,6 +6,8 @@
 
 module Data.Product.Base where
 
+open import Type public using (Σ; fst; snd; _×_; _,_)
+
 open import Function.Base
 open import Level
 
@@ -26,11 +28,14 @@ open import Agda.Builtin.Sigma public
   renaming (fst to proj₁; snd to proj₂)
   hiding (module Σ)
 
+{-
 module Σ = Agda.Builtin.Sigma.Σ
   renaming (fst to proj₁; snd to proj₂)
+-}
 
 -- The syntax declaration below is attached to Σ-syntax, to make it
 -- easy to import Σ without the special syntax.
+
 
 infix 2 Σ-syntax
 
@@ -39,9 +44,11 @@ infix 2 Σ-syntax
 
 syntax Σ-syntax A (λ x → B) = Σ[ x ∈ A ] B
 
+
 ------------------------------------------------------------------------
 -- Definition of non-dependent products
 
+{-
 infixr 4 _,′_
 infixr 2 _×_
 
@@ -50,6 +57,7 @@ A × B = Σ[ x ∈ A ] B
 
 _,′_ : A → B → A × B
 _,′_ = _,_
+-}
 
 ------------------------------------------------------------------------
 -- Operations over dependent products

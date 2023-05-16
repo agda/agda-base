@@ -16,6 +16,7 @@ open import Data.Fin.Base using (Fin; zero; suc)
 open import Data.Maybe.Base as Maybe using (Maybe; nothing; just; maybe′)
 open import Data.Nat.Base as ℕ -- using (ℕ; zero; suc; _+_; _*_ ; _≤_ ; s≤s)
 open import Data.Product as Prod using (_×_; _,_; map₁; map₂′)
+open import Data.Product.NAry using (From-product; Vecₓ)
 -- open import Data.Sum.Base as Sum using (_⊎_; inj₁; inj₂)
 -- open import Data.These.Base as These using (These; this; that; these)
 open import Function.Base using (id; _∘_ ; _∘′_; _∘₂_; const; flip)
@@ -25,6 +26,12 @@ open import Level using (Level)
 open import Relation.Binary.Core using (Rel)
 -- import Relation.Binary.Definitions as B
 -- open import Relation.Binary.PropositionalEquality.Core using (_≡_)
+
+
+-- from 1lab
+open import Meta.Idiom
+open import Meta.Bind
+
 
 private
   variable
@@ -514,3 +521,59 @@ _∷ʳ'_ = InitLast._∷ʳ′_
 Please use _∷ʳ′_ (ending in a prime) instead."
 #-}
 -}
+
+
+-- from 1lab
+
+instance
+  Map-List : Map (eff List)
+  Map-List .Map._<$>_ = map
+
+mapUp : (Nat → A → B) → Nat → List A → List B
+mapUp f _ [] = []
+mapUp f n (x ∷ xs) = f n x ∷ mapUp f (suc n) xs
+
+{-
+length : List A → Nat
+length [] = zero
+length (x ∷ x₁) = suc (length x₁)
+
+concat : List (List A) → List A
+concat [] = []
+concat (x ∷ xs) = x ++ concat xs
+
+reverse : List A → List A
+reverse = go [] where
+  go : List A → List A → List A
+  go acc [] = acc
+  go acc (x ∷ xs) = go (x ∷ acc) xs
+-}
+
+_∷r_ : List A → A → List A
+xs ∷r x = xs ++ (x ∷ [])
+
+andᵇ : Bool → Bool → Bool
+andᵇ false _ = false
+andᵇ true false = false
+andᵇ true true = true
+
+all=? : (A → A → Bool) → List A → List A → Bool
+all=? eq=? [] [] = true
+all=? eq=? [] (x ∷ ys) = false
+all=? eq=? (x ∷ xs) [] = false
+all=? eq=? (x ∷ xs) (y ∷ ys) = andᵇ (eq=? x y) (all=? eq=? xs ys)
+
+enumerate : ∀ {ℓ} {A : Set ℓ} → List A → List (Nat × A)
+enumerate = go 0 where
+  go : Nat → List _ → List (Nat × _)
+  go x [] = []
+  go x (a ∷ b) = (x , a) ∷ go (suc x) b
+
+-- from 1lab
+instance
+  From-prod-List : From-product A (λ _ → List A)
+  From-prod-List .From-product.from-prod = go where
+    go : ∀ n → Vecₓ A n → List A
+    go zero xs                = []
+    go (suc zero) xs          = xs ∷ []
+    go (suc (suc n)) (x , xs) = x ∷ go (suc n) xs

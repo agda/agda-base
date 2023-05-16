@@ -6,7 +6,7 @@
 
 module Data.Char.Base where
 
-open import Level using (zero)
+open import Level using (lzero)
 import Data.Nat.Base as ℕ
 open import Data.Bool.Base using (Bool)
 open import Function.Base using (_on_)
@@ -52,11 +52,11 @@ _≈ᵇ_ : (c d : Char) → Bool
 c ≈ᵇ d = toℕ c ℕ.≡ᵇ toℕ d
 
 infix 4 _<_
-_<_ : Rel Char zero
+_<_ : Rel Char lzero
 _<_ = ℕ._<_ on toℕ
 
 {-
 infix 4 _≤_
-_≤_ : Rel Char zero
+_≤_ : Rel Char lzero
 _≤_ = ReflClosure _<_
 -}

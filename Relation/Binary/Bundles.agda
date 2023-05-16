@@ -18,7 +18,7 @@ open import Relation.Binary.Structures
 -- Setoids
 ------------------------------------------------------------------------
 
-record PartialSetoid a ℓ : Set (suc (a ⊔ ℓ)) where
+record PartialSetoid a ℓ : Set (lsuc (a ⊔ ℓ)) where
   field
     Carrier              : Set a
     _≈_                  : Rel Carrier ℓ
@@ -31,7 +31,7 @@ record PartialSetoid a ℓ : Set (suc (a ⊔ ℓ)) where
   x ≉ y = ¬ (x ≈ y)
 
 
-record Setoid c ℓ : Set (suc (c ⊔ ℓ)) where
+record Setoid c ℓ : Set (lsuc (c ⊔ ℓ)) where
   infix 4 _≈_
   field
     Carrier       : Set c
@@ -48,7 +48,7 @@ record Setoid c ℓ : Set (suc (c ⊔ ℓ)) where
   open PartialSetoid partialSetoid public using (_≉_)
 
 
-record DecSetoid c ℓ : Set (suc (c ⊔ ℓ)) where
+record DecSetoid c ℓ : Set (lsuc (c ⊔ ℓ)) where
   infix 4 _≈_
   field
     Carrier          : Set c
@@ -69,7 +69,7 @@ record DecSetoid c ℓ : Set (suc (c ⊔ ℓ)) where
 -- Preorders
 ------------------------------------------------------------------------
 
-record Preorder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record Preorder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _∼_
   field
     Carrier    : Set c
@@ -89,7 +89,7 @@ record Preorder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
     open Setoid setoid public
 
 
-record TotalPreorder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record TotalPreorder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _≲_
   field
     Carrier         : Set c
@@ -111,7 +111,7 @@ record TotalPreorder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
 -- Partial orders
 ------------------------------------------------------------------------
 
-record Poset c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record Poset c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _≤_
   field
     Carrier        : Set c
@@ -131,7 +131,7 @@ record Poset c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
     using (module Eq)
 
 
-record DecPoset c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record DecPoset c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _≤_
   field
     Carrier           : Set c
@@ -160,7 +160,7 @@ record DecPoset c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
     open DecSetoid decSetoid public
 
 
-record StrictPartialOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record StrictPartialOrder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _<_
   field
     Carrier              : Set c
@@ -180,7 +180,7 @@ record StrictPartialOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) 
     open Setoid setoid public
 
 
-record DecStrictPartialOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record DecStrictPartialOrder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _<_
   field
     Carrier                 : Set c
@@ -211,7 +211,7 @@ record DecStrictPartialOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂
 -- Total orders
 ------------------------------------------------------------------------
 
-record TotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record TotalOrder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _≤_
   field
     Carrier      : Set c
@@ -236,7 +236,7 @@ record TotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
     }
 
 
-record DecTotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record DecTotalOrder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _≤_
   field
     Carrier         : Set c
@@ -268,7 +268,7 @@ record DecTotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
 -- definition capturing these three properties implies decidability
 -- as `Trichotomous` necessarily separates out the equality case.
 
-record StrictTotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record StrictTotalOrder c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _<_
   field
     Carrier            : Set c
@@ -301,7 +301,7 @@ record StrictTotalOrder c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) wh
 -- Apartness relations
 ------------------------------------------------------------------------
 
-record ApartnessRelation c ℓ₁ ℓ₂ : Set (suc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
+record ApartnessRelation c ℓ₁ ℓ₂ : Set (lsuc (c ⊔ ℓ₁ ⊔ ℓ₂)) where
   infix 4 _≈_ _#_
   field
     Carrier             : Set c

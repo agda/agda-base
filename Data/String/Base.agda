@@ -6,7 +6,7 @@
 
 module Data.String.Base where
 
-open import Level using (zero)
+open import Level using (lzero)
 open import Data.Bool.Base using (Bool; true; false)
 open import Data.Char.Base as Char using (Char)
 open import Data.List.Base as List using (List; [_]; _∷_; [])

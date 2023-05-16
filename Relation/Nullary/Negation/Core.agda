@@ -6,6 +6,8 @@
 
 module Relation.Nullary.Negation.Core where
 
+open import Type public using (¬_)
+
 open import Data.Bool.Base using (not)
 open import Data.Empty using (⊥)
 open import Data.Empty.Irrelevant using (⊥-elim)
@@ -24,11 +26,11 @@ private
 
 ------------------------------------------------------------------------
 -- Negation.
-
+{-
 infix 3 ¬_
 ¬_ : Set a → Set a
 ¬ P = P → ⊥
-
+-}
 -- Double-negation
 DoubleNegation : Set p → Set p
 DoubleNegation P = ¬ ¬ P

@@ -6,6 +6,7 @@
 
 module Data.Product where
 
+open import Data.Product.Base public
 open import Function.Base
 open import Level
 open import Relation.Nullary.Negation.Core

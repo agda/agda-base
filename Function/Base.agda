@@ -11,6 +11,7 @@
 
 module Function.Base where
 
+open import Type public using (id; _∘_; _$_)
 open import Level using (Level)
 
 private
@@ -24,9 +25,10 @@ private
 
 ------------------------------------------------------------------------
 -- Some simple functions
-
+{-
 id : A → A
 id x = x
+-}
 
 const : A → B → A
 const x = λ _ → x
@@ -40,18 +42,19 @@ constᵣ _ = id
 -- These are functions whose output has a type that depends on the
 -- value of the input to the function.
 
-infixr 9 _∘_ _∘₂_
+infixr 9 _∘₂_ -- _∘_
 infixl 0 _|>_
 infix  0 case_return_of_
-infixr -1 _$_
+-- infixr -1  _$_
 
 -- Composition
-
+{-
 _∘_ : ∀ {A : Set a} {B : A → Set b} {C : {x : A} → B x → Set c} →
       (∀ {x} (y : B x) → C y) → (g : (x : A) → B x) →
       ((x : A) → C (g x))
 f ∘ g = λ x → f (g x)
 {-# INLINE _∘_ #-} -- DECIDE (also below)
+-}
 
 _∘₂_ : ∀ {A₁ : Set a} {A₂ : A₁ → Set d}
          {B : (x : A₁) → A₂ x → Set b}
@@ -71,11 +74,12 @@ flip f = λ y x → f x y
 -- Application - note that _$_ is right associative, as in Haskell.
 -- If you want a left associative infix application operator, use
 -- Category.Functor._<$>_ from Category.Monad.Identity.IdentityMonad.
-
+{-
 _$_ : ∀ {A : Set a} {B : A → Set b} →
       ((x : A) → B x) → ((x : A) → B x)
 f $ x = f x
 {-# INLINE _$_ #-}
+-}
 
 -- Flipped application (aka pipe-forward)
 

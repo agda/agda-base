@@ -11,6 +11,7 @@ open import Data.Nat.Base
 open import Data.Fin.Base using (Fin; zero; suc)
 open import Data.List.Base as List using (List)
 open import Data.Product as Prod using (_×_; _,_) -- ; ∃; ∃₂)
+open import Data.Product.NAry using (From-product; Vecₓ)
 -- open import Data.These.Base as These using (These; this; that; these)
 open import Function.Base using (const; _∘′_; id; _∘_)
 open import Level using (Level)
@@ -368,3 +369,13 @@ last xs with initLast xs
 transpose : Vec (Vec A n) m → Vec (Vec A m) n
 transpose []         = replicate []
 transpose (as ∷ ass) = replicate _∷_ ⊛ as ⊛ transpose ass
+
+-- from 1lab
+
+instance
+  From-prod-Vec : From-product A (Vec A)
+  From-prod-Vec .From-product.from-prod = go where
+    go : ∀ n → Vecₓ A n → Vec A n
+    go zero xs                = []
+    go (suc zero) xs          = xs ∷ []
+    go (suc (suc n)) (x , xs) = x ∷ go (suc n) xs

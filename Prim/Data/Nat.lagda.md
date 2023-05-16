@@ -16,12 +16,12 @@ a point and an endomorphism.
 
 ```agda
 open import Agda.Builtin.Nat public
-  using (Nat)
+  using (Nat; suc; zero)
   renaming (_+_ to infixl 6 _+_
            ;_-_ to infixl 6 _-_
            ;_*_ to infixl 7 _*_
-           ;_==_ to infix  4 _==_
-           ;_<_ to infix  4 _<_
+           ;_==_ to infix  4 _≡ᵇ_
+           ;_<_ to infix  4 _<ᵇ_
            )
 ```
 

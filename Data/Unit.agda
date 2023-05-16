@@ -11,6 +11,8 @@ module Data.Unit where
 
 open import Data.Unit.Base public
 
+Unit = ⊤
+
 {-
 ------------------------------------------------------------------------
 -- Re-export query operations

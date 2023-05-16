@@ -6,6 +6,9 @@
 
 module Data.Empty where
 
+-- from 1lab
+open import Type public using (⊥)
+
 open import Data.Irrelevant using (Irrelevant)
 
 ------------------------------------------------------------------------
@@ -23,8 +26,10 @@ private
 -- to each other. In particular this means that all functions returning a
 -- proof of ⊥ are equal.
 
+{- destroyed...
 ⊥ : Set
 ⊥ = Irrelevant Empty
+-}
 
 {-# DISPLAY Irrelevant Empty = ⊥ #-}
 

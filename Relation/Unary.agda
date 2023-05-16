@@ -33,7 +33,7 @@ private
 -- containing all the elements of A that satisfy property P. This view
 -- informs much of the notation used below.
 
-Pred : ∀ {a} → Set a → (ℓ : Level) → Set (a ⊔ suc ℓ)
+Pred : ∀ {a} → Set a → (ℓ : Level) → Set (a ⊔ lsuc ℓ)
 Pred A ℓ = A → Set ℓ
 
 ------------------------------------------------------------------------
@@ -58,7 +58,7 @@ U = λ _ → ⊤
 ------------------------------------------------------------------------
 -- Membership
 
-infix 4 _∈_ _∉_
+infix 4.5 _∈_ _∉_
 
 _∈_ : A → Pred A ℓ → Set _
 x ∈ P = P x
@@ -69,7 +69,7 @@ x ∉ P = ¬ x ∈ P
 ------------------------------------------------------------------------
 -- Subset relations
 
-infix 4 _⊆_ _⊇_ _⊈_ _⊉_ _⊂_ _⊃_ _⊄_ _⊅_ _≐_ _≐′_
+infix 4.5 _⊆_ _⊇_ _⊈_ _⊉_ _⊂_ _⊃_ _⊄_ _⊅_ _≐_ _≐′_
 
 _⊆_ : Pred A ℓ₁ → Pred A ℓ₂ → Set _
 P ⊆ Q = ∀ {x} → x ∈ P → x ∈ Q
@@ -116,7 +116,7 @@ _⊉′_ : Pred A ℓ₁ → Pred A ℓ₂ → Set _
 P ⊉′ Q = ¬ (P ⊇′ Q)
 
 _⊂′_ : Pred A ℓ₁ → Pred A ℓ₂ → Set _
-P ⊂′ Q = P ⊆′ Q × Q ⊈′ P
+P ⊂′ Q = (P ⊆′ Q) × (Q ⊈′ P)
 
 _⊃′_ : Pred A ℓ₁ → Pred A ℓ₂ → Set _
 P ⊃′ Q = Q ⊂′ P
@@ -214,12 +214,12 @@ P ∪ Q = λ x → x ∈ P ⊎ x ∈ Q
 -- Intersection.
 
 _∩_ : Pred A ℓ₁ → Pred A ℓ₂ → Pred A _
-P ∩ Q = λ x → x ∈ P × x ∈ Q
+P ∩ Q = λ x → (x ∈ P) × (x ∈ Q)
 
 -- Difference.
 
 _∖_ : Pred A ℓ₁ → Pred A ℓ₂ → Pred A _
-P ∖ Q = λ x → x ∈ P × x ∉ Q
+P ∖ Q = λ x → (x ∈ P) × (x ∉ Q)
 
 -- Infinitary union.
 

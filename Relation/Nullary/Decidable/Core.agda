@@ -63,7 +63,7 @@ recompute (no ¬p) x = ⊥-elim (¬p x)
 -- Interaction with negation, sum, product etc.
 
 -- infixr 1 _⊎-dec_
-infixr 2 _×-dec_ _→-dec_
+infixr 2 _×-dec_ -- _→-dec_
 
 ¬? : Dec P → Dec (¬ P)
 does  (¬? p?) = not (does p?)
@@ -77,10 +77,11 @@ proof (p? ×-dec q?) = proof p? ×-reflects proof q?
 _⊎-dec_ : Dec P → Dec Q → Dec (P ⊎ Q)
 does  (p? ⊎-dec q?) = does p? ∨ does q?
 proof (p? ⊎-dec q?) = proof p? ⊎-reflects proof q?
--}
+
 _→-dec_ : Dec P → Dec Q → Dec (P → Q)
 does  (p? →-dec q?) = not (does p?) ∨ does q?
 proof (p? →-dec q?) = proof p? →-reflects proof q?
+-}
 
 ------------------------------------------------------------------------
 -- Relationship with booleans

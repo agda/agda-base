@@ -26,5 +26,6 @@ open import Agda.Primitive public
            ; lsuc
            ; _⊔_
            )
-  renaming (Set to Type)
+  renaming (Set to Type
+           ; Setω to Typeω)
 ```

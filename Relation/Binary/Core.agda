@@ -10,7 +10,7 @@ module Relation.Binary.Core where
 
 open import Data.Product using (_×_)
 open import Function.Base using (_on_)
-open import Level using (Level; _⊔_; suc)
+open import Level using (Level; _⊔_; lsuc)
 
 private
   variable
@@ -25,19 +25,19 @@ private
 
 -- Heterogeneous binary relations
 
-REL : Set a → Set b → (ℓ : Level) → Set (a ⊔ b ⊔ suc ℓ)
+REL : Set a → Set b → (ℓ : Level) → Set (a ⊔ b ⊔ lsuc ℓ)
 REL A B ℓ = A → B → Set ℓ
 
 -- Homogeneous binary relations
 
-Rel : Set a → (ℓ : Level) → Set (a ⊔ suc ℓ)
+Rel : Set a → (ℓ : Level) → Set (a ⊔ lsuc ℓ)
 Rel A ℓ = REL A A ℓ
 
 ------------------------------------------------------------------------
 -- Relationships between relations
 ------------------------------------------------------------------------
 
-infix 4 _⇒_ _⇔_ -- _=[_]⇒_
+infix 4.5 _⇒_ _⇔_ -- _=[_]⇒_
 
 -- Implication/containment - could also be written _⊆_.
 -- and corresponding notion of equivalence
